@@ -1,0 +1,22 @@
+AndroidManifest.xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> 
+<usespermission android:name="android.permission.INTERNET" />  
+
+MapsActivity.java 
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {  
+private GoogleMap mMap;   
+@Override    
+protected void onCreate(Bundle savedInstanceState) {  
+super.onCreate(savedInstanceState);   
+setContentView(R.layout.activity_maps);      
+SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()   
+.findFragmentById(R.id.map);      
+mapFragment.getMapAsync(this);   
+} 
+public void onMapReady(GoogleMap googleMap) {
+mMap = googleMap;  
+LatLng pos = new LatLng(13.0708988,80.2214289);  
+mMap.addMarker(new MarkerOptions().position(pos).title("Murugappa")); 
+mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos,25));  
+mMap.animateCamera(CameraUpdateFactory.zoomTo(12), 2000, null); } 
