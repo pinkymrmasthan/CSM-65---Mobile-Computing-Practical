@@ -1,0 +1,25 @@
+MainAcitivty.java  
+package com.example.ex12;
+import android.support.v7.app.AppCompatActivity; 
+import android.os.Bundle; import android.view.View; 
+import android.webkit.WebSettings; import android.webkit.WebView;
+import android.webkit.WebViewClient; 
+public class MainActivity extends AppCompatActivity {  
+private WebView wv1;  
+
+@Override     
+protected void onCreate(Bundle savedInstanceState) {      
+super.onCreate(savedInstanceState);     
+setContentView(R.layout.activity_main);    
+wv1 = (WebView) findViewById(R.id.webview);  
+WebSettings webSettings= wv1.getSettings();     
+webSettings.setJavaScriptEnabled(true);        
+wv1.loadUrl("http://gmail.com/");  
+wv1.setWebViewClient(new WebViewClient());    
+} 
+} 
+ 
+ 
+ 
+AndroidManifest.xml
+<uses-permission android:name="android.permission.INTERNET"></uses-permission> 
