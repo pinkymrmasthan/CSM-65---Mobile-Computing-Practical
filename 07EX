@@ -1,0 +1,57 @@
+MainActivity.java 
+public class MainActivity extends AppCompatActivity {    
+@Override     
+tected void onCreate(Bundle savedInstanceState) {  
+super.onCreate(savedInstanceState);   
+setContentView(R.layout.activitypro_main); 
+Button btn = (Button) findViewById(R.id.button1);       
+btn.setOnCreateContextMenuListener(this);  
+}  
+
+@Override 
+ public boolean onCreateOptionsMenu(Menu menu) {   
+ getMenuInflater().inflate(R.menu.activity_menu, menu);   
+ return true;     }   
+ 
+ @Override   
+ public boolean onOptionsItemSelected(MenuItem item)     
+ {       
+ Toast.makeText(this, item.getTitle(), Toast.LENGTH_LONG).show();    
+ return true;   
+ }  
+ 
+ @Override  
+ public void onCreateContextMenu(ContextMenu menu, View view,              
+ ContextMenu.ContextMenuInfo menuInfo)  
+ {       
+ getMenuInflater().inflate(R.menu.activity_menu, menu);     
+ }    
+ @Override   
+ public boolean onContextItemSelected(MenuItem item)  
+ {      
+ Toast.makeText(this, item.getTitle(), Toast.LENGTH_LONG).show();   
+ return true;   
+ } 
+ } 
+ 
+ activity_menu.xml 
+ (src/main/res/menu/activity_main) 
+ <?xml version="1.0" encoding="utf-8"?> 
+ <menu xmlns:android="http://schemas.android.com/apk/res/android" >  
+ <item    
+ android:id="@+id/menu1"     
+ android:icon="@mipmap/ic_launcher_round"   
+ android:title="Item 1">      
+ <menu>     
+ <item          
+ android:id="@+id/menu1.1"     
+ android:title="Item 1.1"/>         
+ <item               
+ android:id="@+id/menu1.1"          
+ android:title="Item 1.2"/>  
+ </menu> 
+ </item>   
+ </menu> 
+ 
+ 
+ 
