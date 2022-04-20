@@ -1,0 +1,52 @@
+DATEPICKER MainActivity.java  
+package com.example.balashanmugam.datepicker; 
+ 
+import android.support.v7.app.AppCompatActivity; 
+import android.os.Bundle; 
+import android.view.View; 
+import android.widget.Button; 
+import android.widget.DatePicker; 
+import android.widget.Toast; 
+ 
+public class MainActivity extends AppCompatActivity {
+DatePicker d1;
+Button b1; 
+   @Override 
+   protected void onCreate(Bundle savedInstanceState) {  
+   super.onCreate(savedInstanceState);      
+   setContentView(R.layout.activity_main);     
+   d1=(DatePicker)findViewById(R.id.simpledp);    
+   b1=(Button)findViewById(R.id.button2);   
+   }    
+   public void display(View v)   
+   {        
+   int a=d1.getMonth()+1;       
+   Toast.makeText(this,"Date selected:"+d1.getDayOfMonth()+"/"+a+"/"+d1.getYear(),Toast.LENGTH_LONG).show(); 
+   } 
+   }
+   
+   
+   activity_main.xml
+   <?xml version="1.0" encoding="utf-8"?> 
+   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+   xmlns:app="http://schemas.android.com/apk/res-auto"  
+   xmlns:tools="http://schemas.android.com/tools"     
+   android:layout_width="match_parent"  
+   android:layout_height="match_parent" 
+   android:orientation="vertical"     
+   tools:context=".MainActivity"> 
+ 
+    <DatePicker   
+    android:id="@+id/simpledp"    
+    android:layout_width="404dp"  
+    android:layout_height="413dp">
+    </DatePicker> 
+ 
+    <Button      
+    android:id="@+id/button2"    
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"      
+    android:onClick="display"       
+    android:text="Display" /> 
+ 
+</LinearLayout>
