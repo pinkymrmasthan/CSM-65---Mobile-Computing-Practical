@@ -1,0 +1,98 @@
+MainActivity.java 
+import android.content.Intent; 
+import android.support.v7.app.AppCompatActivity; 
+import android.os.Bundle;
+import android.view.View; 
+import android.widget.EditText;
+import android.widget.Toast; 
+public class MainActivity extends AppCompatActivity {
+EditText e_to,e_subj,e_msg;
+
+@Override    
+protected void onCreate(Bundle savedInstanceState) {  
+super.onCreate(savedInstanceState); 
+setContentView(R.layout.activity_main); 
+e_to=(EditText)findViewById(R.id.editText);     
+e_subj=(EditText)findViewById(R.id.editText2);   
+e_msg=(EditText)findViewById(R.id.editText3); 
+}     
+public void sendmail(View view) 
+{    
+String to=e_to.getText().toString();   
+String subj=e_subj.getText().toString();   
+String msg=e_msg.getText().toString();     
+Intent emailApp=new Intent(Intent.ACTION_SEND);  
+emailApp.putExtra(Intent.EXTRA_EMAIL,new String[]{to}); 
+emailApp.putExtra(Intent.EXTRA_SUBJECT,subj);   
+emailApp.putExtra(Intent.EXTRA_TEXT,msg);   
+emailApp.setType("message/rfc822");    
+try {          
+startActivity(Intent.createChooser(emailApp,"Send mail..."));    
+}      
+catch (android.content.ActivityNotFoundException ex){    
+Toast.makeText(MainActivity.this,"There are no email clients installed.",Toast.LENGTH_LONG).show();   
+}     
+}
+} 
+ 
+Activity_Main.Xml 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+xmlns:tools="http://schemas.android.com/tools"  
+android:layout_width="match_parent"   
+android:layout_height="match_parent"    
+android:orientation="vertical"   
+tools:context=".MainActivity"> 
+ 
+    <TextView      
+    android:id="@+id/textView"    
+    android:layout_width="match_parent"   
+    android:layout_height="wrap_content"
+    android:text="@string/to" /> 
+ 
+    <EditText      
+    android:id="@+id/editText"       
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content" 
+    android:ems="10"    
+    android:inputType="textPersonName" /> 
+    
+    <TextView     
+    android:id="@+id/textView2"   
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"   
+    android:text="@string/subject" /> 
+ 
+    <EditText
+    android:id="@+id/editText2"  
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content"   
+    android:ems="10"      
+    
+    android:inputType="textPersonName" /> 
+ 
+    <TextView   
+    android:id="@+id/textView3"     
+    android:layout_width="match_parent"    
+    android:layout_height="wrap_content"     
+    android:text="@string/msg" /> 
+ 
+    <EditText      
+    android:id="@+id/editText3"   
+    android:layout_width="match_parent" 
+    android:layout_height="277dp" 
+    android:ems="10"   
+    android:inputType="textMultiLine" /> 
+    
+ 
+    <Button       
+    android:id="@+id/button2"   
+    android:layout_width="match_parent" 
+    android:layout_height="wrap_content"    
+    android:onClick="sendmail"    
+    android:text="@string/send" /> 
+ 
+</LinearLayout> 
+ 
+AndroidManifest.xml <uses-permission android:name="android.permission.INTERNET"/> 
