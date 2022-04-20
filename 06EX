@@ -50,3 +50,60 @@ Button b1;
     android:text="Display" /> 
  
 </LinearLayout>
+
+TIME PICKER 
+
+
+MainActivity.java
+package com.example.balashanmugam.timepicker; 
+ 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle; 
+import android.view.View;
+import android.widget.Button;
+import android.widget.TimePicker;
+import android.widget.Toast; 
+ 
+public class MainActivity extends AppCompatActivity {  
+TimePicker t1;   
+Button b1;
+
+@Override   
+protected void onCreate(Bundle savedInstanceState) {   
+super.onCreate(savedInstanceState);      
+setContentView(R.layout.activity_main);      
+t1=(TimePicker)findViewById(R.id.timepick);    
+b1=(Button)findViewById(R.id.button);     } 
+public void display(View v)   
+{      
+Toast.makeText(this,"TIME SELECTED:"+t1.getHour()+":"+t1.getMinute(),Toast.LENGTH_LONG).show();    
+}
+} 
+ 
+ 
+Activity_Main.Xml 
+ 
+<?xml version="1.0" encoding="utf-8"?> 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"    
+xmlns:app="http://schemas.android.com/apk/res-auto"  
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"   
+android:layout_height="match_parent"   
+android:orientation="vertical" 
+tools:context=".MainActivity"> 
+ 
+    <TimePicker      
+    android:id="@+id/timepick"    
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content">
+    </TimePicker> 
+ 
+    <Button      
+    android:id="@+id/button"  
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"    
+    android:onClick="display"    
+    android:text="DISPLAY TIME" /> 
+ 
+ 
+</LinearLayout>
