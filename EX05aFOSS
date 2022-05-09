@@ -12,24 +12,12 @@ php.code
 <html>
 <body>
 <?php
-$num=$_POST['mark'];
-if($num>=95){
-echo"THE GRADE IS:A";
+$a=$_POST['numb'];
+$factorial=1;
+for($i=$a;$i>=1;$i--){
+$factorial=$factorial*$i;
 }
-else if($num>=80){
-echo"THE GRADE IS:B";
-}
-else if($num>=70){
-echo"THE GRADE IS:C";
-}
-else if($num>50){
-echo"THE GRADE IS:D";
-}
-else if($num>=40){
-echo"THE GRADE IS:D1";
-}
-else{
-echo"SORRY,YOUR ARE FAIL";
-}
+echo $factorial;
 ?>
-</body></html>
+</body>
+</html>
